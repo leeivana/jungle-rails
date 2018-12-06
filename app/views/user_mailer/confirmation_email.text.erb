@@ -1,0 +1,22 @@
+Order # <%= @order.id %> Confirmation Email
+===============================================
+
+Thank you for placing your order at Jungle.
+Your order details are as follows:
+
+<% @order.line_items.each do |line_item| %>
+
+Item Name: <%=  line_item.product.name %>
+
+Quantity: <%=  line_item.quantity %>
+
+Price: <%= line_item.product.price * line_item.quantity %>
+
+<% end %>
+
+Total Price : <%= humanized_money_with_symbol @order.total_cents/100.0  %>
+
+Your order will be shipped out shortly.
+Thank you,
+
+Jungle

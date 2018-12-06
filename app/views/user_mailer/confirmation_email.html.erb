@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order # <%= @order.id %> Confirmation Email</h1>
+    <p>
+      Thank you for placing your order at Jungle.
+      Your order details are as follows:<br>
+    </p>
+    <p>
+      <% @order.line_items.each do |line_item| %>
+        <p>
+        Item Name: <%=  line_item.product.name %>
+        </p>
+        <p>
+        Quantity: <%=  line_item.quantity %>
+        </p>
+        <p>
+        <%= line_item.product.price * line_item.quantity %>
+        </p>
+    <% end %>
+    </p>
+    <p>
+      Total Price : <%= humanized_money_with_symbol @order.total_cents/100.0  %>
+    </p>
+    <p>
+        Your order will be shipped out shortly. <br>
+        Thank you, <br>
+        <br>
+        Jungle.
+    </p>
+  </body>
+</html>
