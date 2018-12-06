@@ -15,6 +15,10 @@
         </tr>
       </thead>
       <tbody>
+        <% if enhanced_cart.length == 0 %>
+            <h1 class="empty">Cart is Empty!</h1>
+            <h2 class="empty"><%= link_to 'Items Page', [:products]%></h2>
+        <% end %>
         <% enhanced_cart.each do |item| %>
           <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
         <% end %>
