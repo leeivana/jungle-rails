@@ -140,7 +140,7 @@ cat3.products.create!({
 user1.reviews.create!({
   product_id: 1,
   description: Faker::Hipster.paragraph(2),
-  rating: 10,
+  rating: 5,
 })
 
 user1.reviews.create!({
@@ -158,7 +158,7 @@ user1.reviews.create!({
 user1.reviews.create!({
   product_id: 4,
   description: Faker::Hipster.paragraph(2),
-  rating: 10,
+  rating: 5,
 })
 
 user2.reviews.create!({
@@ -188,25 +188,25 @@ user2.reviews.create!({
 user3.reviews.create!({
   product_id: 2,
   description: Faker::Hipster.paragraph(2),
-  rating: 6,
+  rating: 2,
 })
 
 user3.reviews.create!({
   product_id: 9,
   description: Faker::Hipster.paragraph(2),
-  rating: 9,
+  rating: 5,
 })
 
 user3.reviews.create!({
   product_id: 10,
   description: Faker::Hipster.paragraph(2),
-  rating: 9,
+  rating: 4,
 })
 
 user3.reviews.create!({
   product_id: 11,
   description: Faker::Hipster.paragraph(2),
-  rating: 9,
+  rating: 4,
 })
 
 puts "DONE!"

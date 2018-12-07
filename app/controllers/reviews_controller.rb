@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    # @product = Product.find params[:id]
     @review = Review.find_by(product_id: @product.ids)
   end
 end

@@ -4,9 +4,10 @@
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
 
-  <article class="product-detail">
+  <article class="product-detail" style="padding-bottom: 30px">
 
     <div class="row">
+
 
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
@@ -26,7 +27,7 @@
       </div>
     </div>
 
-<% if @product.reviews.length > 0 %>
+  <% if @product.reviews.length > 0 %>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -40,12 +41,21 @@
         <tr>
           <td><%= review.user.first %> <%= review.user.last %></td>
           <td> <%=  review.description %></td>
-          <td><%= review.rating %>/10</td>
+          <td><%= review.rating %>/5</td>
         </tr>
         <% end %>
       </tbody>
     </table>
+  <% end %>
+<h2>Post a Review!</h2>
+  <%= form_for :reviews do |f| %>
+  <p>Email :</p><%= f.text_field :email %><br />
+  <p>Review     :</p><%= f.text_area :description %><br />
+  Rating:   <%= f.select :rating, ((1..5).map {|i| [i,i] })  %>
+  <br>
+  <%= f.submit "Post Review" %>
 <% end %>
+
   </article>
 
 </section>
