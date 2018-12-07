@@ -26,6 +26,26 @@
       </div>
     </div>
 
+<% if @product.reviews.length > 0 %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Review</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @product.reviews.each do |review| %>
+        <tr>
+          <td><%= review.user.first %> <%= review.user.last %></td>
+          <td> <%=  review.description %></td>
+          <td><%= review.rating %>/10</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>
   </article>
 
 </section>

@@ -20,6 +20,10 @@ main section.categories-show {
       margin-top:    20px;
       // margin:        10px;
 
+      header{
+      background-color: inherit !important;
+      }
+
       header img {
         max-width: 100%;
         max-height: 140px;
@@ -73,6 +77,11 @@ main section.categories-show {
 
     }
   }
+}
+
+.page-header {
+  background-color: white !important;
+  color: black;
 }
 
 main section.products-show {

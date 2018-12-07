@@ -29,6 +29,11 @@ cat1 = Category.find_or_create_by! name: 'Apparel'
 cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
+user1 = User.create!(first: 'Bob', last:'Bobeine', email:'bob@email.com', password: 'password')
+user2 = User.create!(first: 'Jill', last:'Jilly', email:'jill@email.com', password: 'password')
+user3 = User.create!(first: 'Jane', last:'Janey', email:'jane@email.com', password: 'password')
+
+
 ## PRODUCTS
 
 puts "Re-creating Products ..."
@@ -132,5 +137,76 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+user1.reviews.create!({
+  product_id: 1,
+  description: Faker::Hipster.paragraph(2),
+  rating: 10,
+})
+
+user1.reviews.create!({
+  product_id: 2,
+  description: Faker::Hipster.paragraph(2),
+  rating: 3,
+})
+
+user1.reviews.create!({
+  product_id: 3,
+  description: Faker::Hipster.paragraph(2),
+  rating: 5,
+})
+
+user1.reviews.create!({
+  product_id: 4,
+  description: Faker::Hipster.paragraph(2),
+  rating: 10,
+})
+
+user2.reviews.create!({
+  product_id: 5,
+  description: Faker::Hipster.paragraph(2),
+  rating: 4,
+})
+
+user2.reviews.create!({
+  product_id: 6,
+  description: Faker::Hipster.paragraph(2),
+  rating: 4,
+})
+
+user2.reviews.create!({
+  product_id: 7,
+  description: Faker::Hipster.paragraph(2),
+  rating: 4,
+})
+
+user2.reviews.create!({
+  product_id: 8,
+  description: Faker::Hipster.paragraph(2),
+  rating: 4,
+})
+
+user3.reviews.create!({
+  product_id: 2,
+  description: Faker::Hipster.paragraph(2),
+  rating: 6,
+})
+
+user3.reviews.create!({
+  product_id: 9,
+  description: Faker::Hipster.paragraph(2),
+  rating: 9,
+})
+
+user3.reviews.create!({
+  product_id: 10,
+  description: Faker::Hipster.paragraph(2),
+  rating: 9,
+})
+
+user3.reviews.create!({
+  product_id: 11,
+  description: Faker::Hipster.paragraph(2),
+  rating: 9,
+})
 
 puts "DONE!"

@@ -2,27 +2,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    # @product = LineItem.select('product_id').find_by(order_id: @order.id)
-    # puts "PRODUCT ID: #{@product}"
-    # select product_id from line_items where order_id = @order.id;
-
-
-
-    # @product_id = LineItem.select("product_id").where(order_id: @order.id)
-    # @item = Product.where(id: @product.ids)
-
-# NEED TO DO :
-# given order id
-# select product_id, quantity from line_items where order_id = @order.id;
-# --> this will get productid and quantity for each item
-# given the productid numbers --> retrieve information from product table for image, name description
 
   end
 
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
-    # @order = Order.find(params[:id])
 
     if order.valid?
       empty_cart!

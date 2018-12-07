@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   resources :products, only: [:index, :show]
+
+  # resources :product do
+  #   resources :reviews, only: [:index, :show]
+  # end
+
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] do
@@ -18,6 +23,10 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+
+  namespace :user do
+
+  end
 
   namespace :admin do
     root to: 'dashboard#show'
