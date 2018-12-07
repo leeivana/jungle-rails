@@ -2,6 +2,12 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+## Screenshots 
+![Main Page](https://github.com/leeivana/jungle-rails/blob/master/docs/main-page.png?raw=true)
+![Product Page](https://github.com/leeivana/jungle-rails/blob/master/docs/product-page.png?raw=true)
+![Sold Out Item](https://github.com/leeivana/jungle-rails/blob/master/docs/sold-out-item.png?raw=true)
+
+
 
 ## Setup
 
