@@ -1,10 +1,32 @@
 class ReviewsController < ApplicationController
 
-  def index
-    @reviews = Review.all.order(created_at: :desc)
+  def new
+    @review = Review.new
   end
 
-  def show
-    @review = Review.find_by(product_id: @product.ids)
+  def create
+    @review = Review.new(review_params)
+    @product = Product.find_by(id: params[:id])
+    @review.user = current_user
+
+    if @review.save
+      redirect_to product_path(@product), notice: 'Review successfully posted.'
+      render :show, status: :created, location: @review
+    else
+      render :new
+    end
+
   end
+
+  private
+  def review_params
+    review = params.require(:review).permit(
+      :description,
+      :rating
+    )
+    review[:product_id] = params[:product_id]
+    review
+  end
+
 end
+

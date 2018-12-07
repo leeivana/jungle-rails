@@ -27,7 +27,7 @@
       </div>
     </div>
 
-  <% if @product.reviews.length > 0 %>
+<% if @product.reviews.length > 0 %>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -46,16 +46,19 @@
         <% end %>
       </tbody>
     </table>
-  <% end %>
+<% end %>
+<% if current_user %>
 <h2>Post a Review!</h2>
-  <%= form_for :reviews do |f| %>
-  <p>Email :</p><%= f.text_field :email %><br />
+  <%=  form_for [@product, Review.new]  do |f| %>
   <p>Review     :</p><%= f.text_area :description %><br />
   Rating:   <%= f.select :rating, ((1..5).map {|i| [i,i] })  %>
   <br>
   <%= f.submit "Post Review" %>
 <% end %>
+<% end %>
 
   </article>
 
 </section>
+
+
