@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+ before_filter :authorize, :only => [:create, :delete]
 
   def new
     @review = Review.new
@@ -6,16 +7,26 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find_by(id: params[:product_id])
     @review.user = current_user
 
     if @review.save
-      redirect_to product_path(@product), notice: 'Review successfully posted.'
-      render :show, status: :created, location: @review
+      redirect_to product_path(@product), notice: 'Review created successfully'
     else
       render :new
     end
 
+  end
+
+  def destroy
+      @review = Review.find_by(id: params[:id])
+      @product = Product.find_by(id: params[:product_id])
+    if current_user.id == @review.user_id
+      @review.destroy
+      redirect_to product_path(@product), notice: 'Review deleted'
+    else
+      redirect_to product_path(@product)
+    end
   end
 
   private

@@ -7,8 +7,6 @@
   <article class="product-detail" style="padding-bottom: 30px">
 
     <div class="row">
-
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
@@ -37,24 +35,29 @@
         </tr>
       </thead>
       <tbody>
-        <% @product.reviews.each do |review| %>
+        <% @product.reviews.order(created_at: :desc).each do |review| %>
         <tr>
           <td><%= review.user.first %> <%= review.user.last %></td>
           <td> <%=  review.description %></td>
           <td><%= review.rating %>/5</td>
+          <% if current_user && current_user.id == review.user_id%>
+          <td class="deleteBtn">
+            <%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+          </td>
         </tr>
+        <% end %>
         <% end %>
       </tbody>
     </table>
 <% end %>
 <% if current_user %>
-<h2>Post a Review!</h2>
-  <%=  form_for [@product, Review.new]  do |f| %>
-  <p>Review     :</p><%= f.text_area :description %><br />
-  Rating:   <%= f.select :rating, ((1..5).map {|i| [i,i] })  %>
-  <br>
-  <%= f.submit "Post Review" %>
-<% end %>
+  <h2>Post a Review!</h2>
+    <%=  form_for [@product, Review.new]  do |f| %>
+    <p>Review     :</p><%= f.text_area :description %><br />
+    Rating:   <%= f.select :rating, ((1..5).map {|i| [i,i] })  %>
+    <br>
+    <%= f.submit "Post Review" %>
+  <% end %>
 <% end %>
 
   </article>
