@@ -29,9 +29,9 @@ cat1 = Category.find_or_create_by! name: 'Apparel'
 cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
-user1 = User.create!(first: 'Bob', last:'Bobeine', email:'bob@email.com', password: 'password')
-user2 = User.create!(first: 'Jill', last:'Jilly', email:'jill@email.com', password: 'password')
-user3 = User.create!(first: 'Jane', last:'Janey', email:'jane@email.com', password: 'password')
+user1 = User.create!(first: 'Bob', last:'Bobeine', email:'bob@email.com', password: 'password', password_confirmation: 'password')
+user2 = User.create!(first: 'Jill', last:'Jilly', email:'jill@email.com', password: 'password', password_confirmation: 'password')
+user3 = User.create!(first: 'Jane', last:'Janey', email:'jane@email.com', password: 'password', password_confirmation: 'password')
 
 
 ## PRODUCTS
