@@ -73,6 +73,28 @@ RSpec.describe User, type: :model do
   # end
 
   describe '.authenticate_with_credentials' do
+    let(:user) do
+      User.create!(
+        first: 'user',
+        last: 'user',
+        email: 'user@gmail.com',
+        password: 'password',
+        password_confirmation: 'password',
+      )
+    end
+
+    it 'should return true if username and password are valid' do
+      user.save!
+      expect(User.authenticate_with_credentials('user@gmail.com', 'password')).to be_truthy
+    end
+    it 'should return false if username and password do not match' do
+      user.save!
+      expect(User.authenticate_with_credentials('user@gmail.com', 'passwordss')).to be_falsey
+    end
+    it 'should return true if username and password match regardless of case' do
+      user.save!
+      expect(User.authenticate_with_credentials('USER@Gmail.com', 'password')).to be_truthy
+    end
   end
 
 end
